@@ -22,6 +22,7 @@
         mainNav = document.getElementById('js-main-nav');
 
     buildNav(parsedResponse.items, mainNav);
+    addEvents();
   };
 
   var buildNav = function(data, parent) {
@@ -53,7 +54,14 @@
     parent.appendChild(newUnorderedList);
   };
 
+  var addEvents = function() {
+    var subNavs = document.querySelectorAll('.sub-nav');
+    
+  }
+
   makeRequest('/api/nav.json');
+
+  
 
 })();
 

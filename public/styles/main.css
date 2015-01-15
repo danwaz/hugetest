@@ -97,6 +97,7 @@ header {
   background: white;
   width: 220px;
   padding: 12px 0;
+  display: none;
 }
 
 .sub-nav ul li a {
