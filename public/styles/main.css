@@ -22,7 +22,7 @@ body {
   padding-right: 24px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1280px;
+  max-width: 968px;
 }
 
 h1, h2 {
@@ -49,6 +49,10 @@ header {
   z-index: 10;
 }
 
+.page-wrapper {
+  position: relative;
+}
+
 .huge-logo {
   background: url('/images/HUGE-white.png') no-repeat center center;
   background-size: 100%;
@@ -60,13 +64,7 @@ header {
   float: left;
 }
 
-.main-nav {
-  float: left;
-  font-family: 'HUGEAvantGardeBold';
-  line-height: 72px;
-}
-
-.main-nav > ul{
+.main-nav > ul {
   float: left;
   font-family: 'HUGEAvantGardeBold';
   line-height: 72px;
@@ -85,7 +83,7 @@ header {
   color: white;
 }
 
-.main-nav > ul > li > a:hover {
+.main-nav > ul > li > a:hover, .sub-nav.open > a {
   background-color: white;
   color: #ec008c;
   height: 100%;
@@ -95,9 +93,13 @@ header {
   position: absolute;
   line-height: 42px;
   background: white;
-  width: 220px;
+  width: 225px;
   padding: 12px 0;
   display: none;
+}
+
+.sub-nav.open ul {
+  display: block;
 }
 
 .sub-nav ul li a {
@@ -116,19 +118,32 @@ header {
 }
 
 .main-hero {
+  position: relative;
+}
+
+.main-hero__img {
   background: url('/images/background-image.jpg') center center;
   height: 640px;
   background-size: cover;
-  display: table;
 }
 
-.main-hero__inner {
+.main-hero__title {
+  display: table;
+  position: absolute;
+  width: 100%;
+  height: 640px;
+  top: 0;
+  left: 0;
+}
+
+.main-hero__title__inner {
   display: table-cell;
   vertical-align: middle;
 }
 
-.main-hero h2 {
+.main-hero__title h2 {
   margin: 0 auto;
+  padding: 0 24px;
   color: white;
   font-size: 120px;
   text-align: center;
@@ -144,8 +159,126 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 7;
   width: 100%;
   height: 100%;
   display: none;
+}
+
+.nav-overlay.active {
+  display: block;
+}
+
+.nav-toggle {
+  background: url(/images/toggle-open.svg) center center;
+  width: 24px;
+  height: 20px;
+  float: left;
+  margin: 20px 24px;
+  cursor: pointer;
+  display: none;
+}
+
+.nav-toggle.active {
+  background: url(/images/toggle-close.svg) center center;
+}
+
+.mobile-header {
+  background: #ec008c;
+  height: 60px;
+  position: relative;
+  display: none;
+  z-index: 8;
+}
+
+@media (max-width: 768px) {
+  .desktop-header {
+    position: absolute;
+    width: calc(100% - 72px);
+    height: auto;
+    -webkit-transform: translate3d(-100%,0,0);
+    transition: transform .3s ease;
+  }
+
+  .nav-open .desktop-header {
+    -webkit-transform: translate3d(0,0,0);
+  }
+
+  .page-wrapper {
+    -webkit-transform: translate3d(0,0,0);
+    transition: transform .3s ease;
+  }
+
+  .nav-open .page-wrapper {
+    -webkit-transform: translate3d(calc(100% - 72px),0,0);
+  }
+
+  .nav-open .nav-overlay {
+    display: block;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  
+  .mobile-header {
+    display: block;
+  }
+  
+  .nav-toggle {
+    display: block;
+  }
+
+  .huge-logo {
+    float: none;
+    padding: 18px 0;
+  }
+
+  .main-nav > ul {
+    float: none;
+    background: white;
+  }
+
+  .main-nav > ul > li {
+    float: none;
+  }
+
+  .main-nav > ul > li > a {
+    color: black;
+  }
+
+  .main-nav > ul > li > a:hover {
+    background: #eee;
+  }
+
+  .sub-nav ul {
+    position: relative;
+    width: 100%;
+  }
+
+  .main-hero__img {
+    height: 240px;
+  }
+
+  .main-hero__title {
+    display: block;
+    position: relative;
+    height: auto;
+  }
+
+  .main-hero__title__inner {
+    display: block;
+  }
+
+  .main-hero h2 {
+    color: black;
+    text-align: left;
+    font-size: 40px;
+    padding-top: 48px;
+  }
+
+  .main-content {
+    padding-top: 20px;
+  }
 }

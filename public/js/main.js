@@ -39,7 +39,7 @@
       //append the <a> to the <li>
       newListItem.appendChild(newAnchor);
 
-      //append the <li> to the mainNav
+      //append the <li> to the <ul>
       newUnorderedList.appendChild(newListItem);
 
       // check if this contains a submenu
@@ -50,18 +50,57 @@
         }
       }
     }
-    //append the <li> to the mainNav
+    //append the <ul> to the parent
     parent.appendChild(newUnorderedList);
   };
 
-  var addEvents = function() {
+  var openSubNav = function() {
+    // close all other subnavs
+    closeSubNav();
+    //open target nav
+    this.classList.add('open');
+    //show overlay
+    document.getElementById('js-nav-overlay').classList.add('active');
+  };
+
+  var closeSubNav = function() {
     var subNavs = document.querySelectorAll('.sub-nav');
-    
+    for(i = 0; i < subNavs.length; i++) {
+      subNavs[i].classList.remove('open');
+    }
+    //hide overlay
+    document.getElementById('js-nav-overlay').classList.remove('active');
+  };
+
+  var toggleMobileNav = function() {
+    this.classList.toggle('active');
+    document.querySelector('body').classList.toggle('nav-open');
+  }
+
+  var addEvents = function() {
+    var subNavs = document.querySelectorAll('.sub-nav'),
+        body = document.querySelector('body'),
+        mobileNavToggle = document.getElementById('js-nav-toggle'),
+        i;
+
+    // Add open events to subnav toggles
+    for(i = 0; i < subNavs.length; i++) {
+      subNavs[i].addEventListener('click', openSubNav);
+    }
+
+    // Add close event to any item other than subnav toggles
+    body.addEventListener('click', function(e){
+      // check if the parent is open
+      if(!e.target.parentNode.classList.contains('open')) {
+        closeSubNav();
+      }
+    });
+
+    // Add navToggle event for mobile nav
+    mobileNavToggle.addEventListener('click', toggleMobileNav);
   }
 
   makeRequest('/api/nav.json');
-
-  
 
 })();
 
