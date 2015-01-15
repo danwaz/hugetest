@@ -1,18 +1,150 @@
 @import "fonts.css";
 
+/*
+ * Magenta #ec008c
+ * Light Gray #eee
+ * Translucent Black rgba(0, 0, 0, 0.5)
+ */
+
+/* Global Styles */
 body {
-  background: #ec008c;
-  color: #fff;
+  margin: 0;
+  font-family: 'Galaxie', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+.mod {
+  width: 100%;
+}
+
+.mod__inner {
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1280px;
+}
+
+h1, h2 {
+  font-family: 'HUGEAvantGardeBold';
+  line-height: 1.1;
+}
+
+p {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+ul {
+  padding: 0;
   margin: 0;
-  font: 20vmin/1 HUGEAvantGardeBold;
-  letter-spacing: -0.06em;
+  list-style: none;
+}
+
+/* Navigation */
+header {
+  background: #ec008c;
+  height: 72px;
+  position: relative;
+  z-index: 10;
+}
+
+.huge-logo {
+  background: url('/images/HUGE-white.png') no-repeat center center;
+  background-size: 100%;
+  width: 60px;
+  height: 24px;
+  text-indent: -9999px;
+  margin: 0 48px 0 24px;
+  padding: 24px 0;
+  float: left;
+}
+
+.main-nav {
+  float: left;
+  font-family: 'HUGEAvantGardeBold';
+  line-height: 72px;
+}
+
+.main-nav > ul{
+  float: left;
+  font-family: 'HUGEAvantGardeBold';
+  line-height: 72px;
+}
+
+.main-nav > ul > li {
+ float: left;
+ position: relative;
+}
+
+.main-nav > ul > li > a {
+  display: block;
+  padding: 0 24px;
+  font-size: 21px;
+  text-decoration: none;
+  color: white;
+}
+
+.main-nav > ul > li > a:hover {
+  background-color: white;
+  color: #ec008c;
+  height: 100%;
+}
+
+.sub-nav ul {
+  position: absolute;
+  line-height: 42px;
+  background: white;
+  width: 220px;
+  padding: 12px 0;
+}
+
+.sub-nav ul li a {
+  display: block;
+  font-family: 'Galaxie';
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+  padding: 3px 24px;
+
+}
+
+.sub-nav ul li a:hover {
+  color: #ec008c;
+  background: #eee;
+}
+
+.main-hero {
+  background: url('/images/background-image.jpg') center center;
+  height: 640px;
+  background-size: cover;
+  display: table;
+}
+
+.main-hero__inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.main-hero h2 {
+  margin: 0 auto;
+  color: white;
+  font-size: 120px;
   text-align: center;
+  max-width: 810px;
+}
+
+.main-content {
+  padding: 30px 0;
+}
+
+.nav-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  display: none;
 }

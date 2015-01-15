@@ -1,3 +1,14 @@
+/*
+ * Primary Navigation 21/48 HUGE Avant Garde Bold
+ * Secondary Navigation 16/48 Galaxie Copernicus Book
+ * Headline (Desktop) 120/132 HUGE Avant Garde Bold
+ * Body Copy (Desktop) 24/36 Galaxie Copernicus Book
+ * Headline (Mobile) 44/48 HUGE Avant Garde Bold
+ * Body Copy (Mobile) 14/24 Galaxie Copernicus Book
+ * Copyright (Mobile) 12/16 Helvetica Neue Regular
+ */
+
+
 @font-face {
   font-family: 'HUGEAvantGardeBold';
   src: url("/fonts/huge_agb_v5-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/huge_agb_v5-webfont.woff") format("woff"), url("/fonts/huge_agb_v5-webfont.ttf") format("truetype"), url("/fonts/huge_agb_v5-webfont.svg#svgFontName") format("svg");
