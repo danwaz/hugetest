@@ -2,12 +2,12 @@
   var httpRequest;
   var makeRequest = function(url) {
     httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = alertContents;
+    httpRequest.onreadystatechange = getRequest;
     httpRequest.open('GET', url);
     httpRequest.send();
   };
 
-  var alertContents = function() {
+  var getRequest = function() {
     if (httpRequest.readyState === 4) {
       if (httpRequest.status === 200) {
         parseJSONResponse(httpRequest.responseText);
@@ -54,11 +54,17 @@
     parent.appendChild(newUnorderedList);
   };
 
-  var openSubNav = function() {
+  var openSubNav = function(e) {
     // close all other subnavs
     closeSubNav();
-    //open target nav
+    // open target nav
     this.classList.add('open');
+
+    // prevent linking to section if item contains a sub-nav
+    if (e.target.parentNode.classList.contains('open')) {
+      e.preventDefault();
+    }
+
     //show overlay
     document.getElementById('js-nav-overlay').classList.add('active');
   };
