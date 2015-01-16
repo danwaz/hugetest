@@ -83,7 +83,8 @@ header {
   color: white;
 }
 
-.main-nav > ul > li > a:hover, .sub-nav.open > a {
+.main-nav > ul > li > a:hover, 
+.sub-nav.open > a {
   background-color: white;
   color: #ec008c;
   height: 100%;
@@ -322,6 +323,11 @@ header {
 
   .main-nav > ul > li > a:hover {
     background: #eee;
+  }
+
+  .main-nav > ul > li > a:hover,
+  .sub-nav.open > a {
+    color: black;
   }
 
   .sub-nav:before {
