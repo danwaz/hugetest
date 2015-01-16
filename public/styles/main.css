@@ -106,7 +106,6 @@ header {
   -webkit-transform: rotate(180deg);
 }
 
-
 .sub-nav ul {
   position: absolute;
   line-height: 42px;
@@ -143,6 +142,30 @@ header {
   display: none;
 }
 
+/* Mobile Nav */
+.mobile-header {
+  background: #ec008c;
+  height: 60px;
+  position: relative;
+  z-index: 8;
+  display: none;
+}
+
+.nav-toggle {
+  background: url(/images/toggle-open.svg) center center;
+  width: 24px;
+  height: 20px;
+  float: left;
+  margin: 20px 24px;
+  cursor: pointer;
+  display: none;
+}
+
+.nav-toggle.active {
+  background: url(/images/toggle-close.svg) center center;
+}
+
+/* Hero */
 .main-hero {
   position: relative;
 }
@@ -176,6 +199,7 @@ header {
   max-width: 810px;
 }
 
+/* Body Content */
 .main-content {
   padding: 30px 0;
 }
@@ -195,37 +219,24 @@ header {
   display: block;
 }
 
-.nav-toggle {
-  background: url(/images/toggle-open.svg) center center;
-  width: 24px;
-  height: 20px;
-  float: left;
-  margin: 20px 24px;
-  cursor: pointer;
-  display: none;
-}
-
-.nav-toggle.active {
-  background: url(/images/toggle-close.svg) center center;
-}
-
-.mobile-header {
-  background: #ec008c;
-  height: 60px;
-  position: relative;
-  display: none;
-  z-index: 8;
-}
-
 /* Tweak points between mobile + desktop */
 @media (max-width: 1024px) and (min-width : 769px){
+  .huge-logo {
+    width: 50px;
+    margin-right: 24px;
+  }
+
   .main-nav > ul > li > a {
     font-size: 16px;
     padding: 30px 16px 26px;
   }
-  .huge-logo {
-    width: 50px;
-    margin-right: 24px;
+
+  .sub-nav:last-child ul{
+    width: 180px;
+  }
+
+  .sub-nav ul li a {
+    font-size: 15px;
   }
 
   .main-hero__title {
@@ -239,14 +250,6 @@ header {
 
   .main-hero__img {
     height: 440px;
-  }
-
-  .sub-nav:last-child ul{
-    width: 180px;
-  }
-
-  .sub-nav ul li a {
-    font-size: 15px;
   }
 
   p {
@@ -264,14 +267,16 @@ header {
     transition: transform .3s ease;
   }
 
-  .nav-open .desktop-header {
-    -webkit-transform: translate3d(0,0,0);
+  .mobile-header {
+    display: block;
   }
 
-  .page-wrapper__inner {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-open .desktop-header {
     -webkit-transform: translate3d(0,0,0);
-    transition: transform .3s ease;
-    z-index: 11;
   }
 
   .nav-open .page-wrapper {
@@ -287,12 +292,10 @@ header {
     display: block;
   }
 
-  .mobile-header {
-    display: block;
-  }
-  
-  .nav-toggle {
-    display: block;
+  .page-wrapper__inner {
+    -webkit-transform: translate3d(0,0,0);
+    transition: transform .3s ease;
+    z-index: 11;
   }
 
   .huge-logo {
@@ -333,11 +336,6 @@ header {
   .copyright {
     display: block;
   }
-
-  p {
-    font-size: 14px;
-    line-height: 24px;
-  }
   
   .main-hero__img {
     height: 240px;
@@ -362,5 +360,10 @@ header {
 
   .main-content {
     padding-top: 20px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 24px;
   }
 }

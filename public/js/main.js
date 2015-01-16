@@ -1,4 +1,5 @@
 (function() {
+  // Retrieve the menu data from the API
   var httpRequest;
   var makeRequest = function(url) {
     httpRequest = new XMLHttpRequest();
@@ -17,6 +18,8 @@
     }
   };
 
+  // Convert the response to JSON
+  // Build navigation and add events
   var parseJSONResponse = function(response) {
     var parsedResponse = JSON.parse(response),
         mainNav = document.getElementById('js-main-nav');
@@ -25,6 +28,7 @@
     addEvents();
   };
 
+  // Build navigation recursively
   var buildNav = function(data, parent) {
     var items = data,
         newUnorderedList = document.createElement('ul'),
@@ -36,10 +40,10 @@
       newAnchor.text = items[i]['label'];
       newAnchor.href = items[i]['url'];
       
-      //append the <a> to the <li>
+      // append the <a> to the <li>
       newListItem.appendChild(newAnchor);
 
-      //append the <li> to the <ul>
+      // append the <li> to the <ul>
       newUnorderedList.appendChild(newListItem);
 
       // check if this contains a submenu
@@ -50,14 +54,14 @@
         }
       }
     }
-    //append the <ul> to the parent
+    // append the <ul> to the parent
     parent.appendChild(newUnorderedList);
   };
 
+  // Events
   var openSubNav = function(e) {
-    // close all other subnavs
+    // close all other subnavs and open target
     closeSubNav();
-    // open target nav
     this.classList.add('open');
 
     // prevent linking to section if item contains a sub-nav
@@ -65,15 +69,17 @@
       e.preventDefault();
     }
 
-    //show overlay
+    // show overlay
     document.getElementById('js-nav-overlay').classList.add('active');
   };
 
   var closeSubNav = function() {
     var subNavs = document.querySelectorAll('.sub-nav');
+    
     for(i = 0; i < subNavs.length; i++) {
       subNavs[i].classList.remove('open');
     }
+
     //hide overlay
     document.getElementById('js-nav-overlay').classList.remove('active');
   };
@@ -96,7 +102,7 @@
 
     // Add close event to any item other than subnav toggles
     body.addEventListener('click', function(e){
-      // check if the parent is open
+      // check if the parent is an open subnav
       if(!e.target.parentNode.classList.contains('open')) {
         closeSubNav();
       }
@@ -106,8 +112,8 @@
     mobileNavToggle.addEventListener('click', toggleMobileNav);
   }
 
+  // Let's kick this off!
   makeRequest('/api/nav.json');
-
 })();
 
 
